@@ -1,0 +1,158 @@
+import java.text.SimpleDateFormat
+
+// 所有项目共享配置 (Root 项目)
+allprojects {
+    apply plugin: 'java'
+
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // Java 编译的时候缺省状态下会因为中文字符而失败
+    [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src'
+            }
+            resources {
+                srcDir 'resources'
+            }
+        }
+        test {
+            java {
+                srcDirs 'junit', 'test'
+            }
+        }
+    }
+
+    // 执行命令: gradle allTask 输出项目名称
+    task allTask << {
+        println project.name
+    }
+
+    // 执行命令: gradle showTasks
+    task showTasks {
+        println tasks.class
+        println tasks.size()
+    }
+
+    // ext 定义 Property
+    ext {
+
+    }
+
+}
+
+// 所有子项目共享配置 (即不包含 Root 项目)
+subprojects {
+    ext {
+
+    }
+
+    version new SimpleDateFormat('yyyy-MM-dd').format(new Date()) + '-SNAPSHOT'
+
+    /*
+        compile
+        testCompile
+        runtime
+        testRuntime
+     */
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.+'
+
+        // http://logging.apache.org/log4j/2.x/maven-artifacts.html
+        compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.9.0'
+        compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.9.0'
+
+        // http://commons.apache.org/proper/commons-lang/
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+
+        // https://github.com/alibaba/fastjson
+        compile group: 'com.alibaba', name: 'fastjson', version: '1.2.31'
+
+        // https://github.com/google/guava
+        compile group: 'com.google.guava', name: 'guava', version: '21.0'
+
+        // https://github.com/netty/netty
+        // compile group: 'io.netty', name: 'netty-all', version: '4.1.9.Final'
+
+        if (project.path != ':core') {
+            compile project(':core')
+        }
+    }
+
+    repositories {
+        // 本地仓库
+        mavenLocal()
+        // 远程仓库
+        mavenCentral()
+        // JCenter 是 Goovy Grape 内的默认仓库
+        jcenter()
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public"
+        }
+        maven {
+            url "http://repo2.maven.org/maven2"
+        }
+        maven {
+            url "http://repo.spring.io/snapshot"
+        }
+        maven {
+            url "http://repo.spring.io/milestone"
+        }
+        maven {
+            url 'http://maven.springframework.org/release'
+        }
+        maven {
+            url 'http://maven.springframework.org/milestone'
+        }
+    }
+
+    jar {
+        manifest {
+            attributes("Implementation-Title": "Gradle")
+        }
+        // archivesBaseName 'TTUI' // 打包成 jar 文件时的文件名称
+    }
+
+    configurations {
+        // 所有需要忽略的包定义在此
+        /*
+        all*.exclude group: 'commons-httpclient'
+        all*.exclude group: 'commons-logging'
+        all*.exclude group: 'commons-beanutils', module: 'commons-beanutils'
+        */
+    }
+
+    // 显示当前项目下所有用于 compile 的 jar
+    task listJars(description: 'Display all compile jars.') << {
+        configurations.compile.each { File file -> println file.name }
+    }
+
+    // https://stackoverflow.com/questions/18689365/how-to-add-xlintunchecked-to-my-android-gradle-based-project
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+
+    // 执行命令: gradle subTask 输出项目名称
+    task subTask << {
+        println project.name
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    // 从 from 拷贝到 into '文件夹' (相对于 build.gradle 所在路径)
+    task copyPlugins(type: Sync) {
+        from configurations.runtime
+        into 'plugins'
+    }
+}
+

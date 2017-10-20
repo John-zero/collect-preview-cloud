@@ -1,0 +1,9 @@
+dependencies {
+    for (p in rootProject.subprojects) {
+        if (p.path != project.path) {
+            compile project(p.path)
+        }
+    }
+
+    compile("org.springframework.boot:spring-boot-starter-test:1.5.7.BUILD-SNAPSHOT")
+}

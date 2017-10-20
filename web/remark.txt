@@ -1,0 +1,68 @@
+参考项目:
+    https://github.com/spring-projects/spring-boot
+    https://github.com/leelance/spring-boot-all
+    https://github.com/ityouknow/spring-boot-examples
+
+Swagger
+    http://localhost:8080/swagger-ui.html
+
+Spring Boot Admin Web
+    http://localhost:8090
+
+JQ AJAX
+    Spring:
+        @RequestBody 处理 contentType: "application/json;charset=utf-8" 类型
+        @RequestParam 处理 contentType: "application/x-www-form-urlencoded" 类型
+
+    1.
+        前端：
+            $("#ID").prop("disabled", true);
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                url: "/",
+                data: JSON.stringify({"" : $('#param').val()}),
+                dataType: 'json',
+                cache: false,
+                async: false, // 同步
+                timeout: 600000,
+                success: function (response) {
+                    console.info(response);
+
+                    $("#ID").prop("disabled", false);
+                },
+                error: function (e) {
+                    console.log("ERROR : ", e);
+
+                    $("#ID").prop("disabled", false);
+                }
+            });
+        后端:
+            (@RequestBody Vo vo) # Vo 对象接收
+
+    2.
+        前端:
+            $("#ID").prop("disabled", true);
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/x-www-form-urlencoded",
+                url: "/",
+                data: {param : $('#param').val()},
+                dataType: 'json',
+                cache: false,
+                async: false, // 同步
+                timeout: 600000,
+                success: function (response) {
+                    console.info(response);
+
+                    $("#ID").prop("disabled", false);
+                },
+                error: function (e) {
+                    console.log("ERROR : ", e);
+
+                    $("#ID").prop("disabled", false);
+                }
+            });
+        后端:
+            (@RequestParam(value = "param") String param)

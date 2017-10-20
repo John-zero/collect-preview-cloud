@@ -1,0 +1,7 @@
+dependencies {
+    // https://dev.mysql.com/downloads/connector/j/
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
+
+    // https://github.com/alibaba/druid
+    compile group: 'com.alibaba', name: 'druid', version: '1.0.29'
+}

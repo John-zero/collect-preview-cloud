@@ -1,0 +1,78 @@
+// build.gradle 申明的是项目自身需要的资源: 依赖项, 仓库地址, 第三方插件 等
+// buildscript 申明的是 Gradle 脚本本身需要的资源: 依赖项, 仓库地址, 第三方插件 等
+buildscript {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		jcenter()
+		maven {
+			url 'http://repo.spring.io/snapshot'
+		}
+		maven {
+			url 'http://repo.spring.io/milestone'
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+	baseName = 'collect-preview-cloud-web'
+	version =  '1.0'
+}
+
+repositories {
+	jcenter()
+	maven {
+		url 'http://repo.spring.io/snapshot'
+	}
+	maven {
+		url 'http://repo.spring.io/milestone'
+	}
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '3.0'
+}
+
+dependencies {
+	compile project(":http")
+	compile project(":redis")
+	compile project(":mysql")
+	compile project(":mybatis")
+	compile project(":swagger")
+
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "${springBootVersion}"
+
+	// 模板引擎
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: "${springBootVersion}"
+
+	// http://www.webjars.org/
+//	compile group: 'org.webjars', name: 'webjars-locator', version: '0.32-1'
+//	compile group: 'org.webjars.bower', name: 'bootstrap', version: '3.3.7-1'
+
+	// 开发模式
+	// IDEA 需要额外设置: https://my.oschina.net/liuyuantao/blog/806942
+	compile("org.springframework.boot:spring-boot-devtools")
+
+	// Admin 客户端
+	compile group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: '1.5.4'
+
+	compile("org.springframework.mobile:spring-mobile-device")
+}
+
+bootRun {
+	addResources = true
+}
+
+springBoot {
+	mainClass = "com.Application"
+}

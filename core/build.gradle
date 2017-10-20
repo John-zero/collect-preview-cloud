@@ -1,0 +1,11 @@
+dependencies {
+
+//    compile 'org.springframework.boot:spring-boot:1.5.7.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot', version: "${springBootVersion}"
+
+
+//    compile 'org.springframework.boot:spring-boot-starter-aop:1.5.7.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: "${springBootVersion}"
+
+
+}

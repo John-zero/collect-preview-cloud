@@ -1,0 +1,13 @@
+dependencies {
+
+    // Swagger
+    // 官网: http://swagger.io
+    // Demo： http://petstore.swagger.io/
+    // Springfox (Java 版本实现)
+    // Docs: https://springfox.github.io/springfox/docs/current/
+    // Swagger-ui (页面展示)
+    // 自制插件: https://github.com/SpringForAll/spring-boot-starter-swagger
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+
+}

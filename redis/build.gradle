@@ -1,0 +1,16 @@
+dependencies {
+
+    // http://www.mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-redis
+    compile("org.springframework.boot:spring-boot-starter-redis:1.4.7.BUILD-SNAPSHOT")
+
+    // http://www.mvnrepository.com/artifact/com.fasterxml.jackson.core
+    compile("com.fasterxml.jackson.core:jackson-annotations:2.9.1")
+    compile("com.fasterxml.jackson.core:jackson-core:2.9.1")
+    compile("com.fasterxml.jackson.core:jackson-databind:2.9.1")
+    // http://mvnrepository.com/artifact/com.fasterxml/classmate
+    compile("com.fasterxml.jackson.core:classmate")
+
+    // https://docs.spring.io/spring-session/docs/current/reference/html5/
+    compile("org.springframework.session:spring-session:1.3.1.RELEASE")
+
+}

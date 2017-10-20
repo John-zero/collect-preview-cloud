@@ -1,0 +1,8 @@
+http://projects.spring.io/spring-data-redis/
+
+缓存相关注解:
+    CacheConfig
+    Cacheable
+    CachePut
+    CacheEvict
+

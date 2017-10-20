@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.mapper.FoldersMapper" >
+    <resultMap id="BaseResultMap" type="com.web.entity.FolderEntity" >
+        <id column="folder_id" property="folderId" jdbcType="BIGINT" />
+        <result column="parent_folder_id" property="parentFolderId" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="folder_name" property="folderName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        folder_id, parent_folder_id, user_id, folder_name
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM folders
+    </select>
+
+    <select id="getAllByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM folders
+        WHERE user_id = #{userId}
+        ORDER BY parent_folder_id
+    </select>
+
+    <select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM folders
+        WHERE folder_id = #{folderId}
+    </select>
+
+    <select id="getByFolderName" parameterType="java.lang.String" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM folders
+        WHERE folder_name = #{folderName}
+    </select>
+
+    <insert id="insert" parameterType="com.web.entity.FolderEntity" >
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="folderId">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+        folders (parent_folder_id, user_id, folder_name)
+        VALUES
+        (#{parentFolderId}, #{userId},  #{folderName})
+    </insert>
+
+    <update id="update" parameterType="com.web.entity.FolderEntity" >
+        UPDATE
+        folders
+        SET
+        <if test="parentFolderId != null">parent_folder_id = #{parentFolderId},</if>
+        <if test="userId != null">user_id = #{userId},</if>
+        <if test="folderName != null">folder_name = #{folderName},</if>
+        WHERE
+        folder_id = #{folderId}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM
+        folders
+        WHERE
+        folder_id = #{folderId}
+    </delete>
+
+    <delete id="clear" parameterType="java.lang.Long" >
+        DELETE FROM
+        folders
+        WHERE
+        user_id = #{userId}
+    </delete>
+
+</mapper>

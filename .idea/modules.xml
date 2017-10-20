@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/all-test/all-test.iml" filepath="$PROJECT_DIR$/.idea/modules/all-test/all-test.iml" group="all-test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/all-test/all-test_main.iml" filepath="$PROJECT_DIR$/.idea/modules/all-test/all-test_main.iml" group="all-test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/all-test/all-test_test.iml" filepath="$PROJECT_DIR$/.idea/modules/all-test/all-test_test.iml" group="all-test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/collect-preview-cloud.iml" filepath="$PROJECT_DIR$/.idea/modules/collect-preview-cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/collect-preview-cloud_main.iml" filepath="$PROJECT_DIR$/.idea/modules/collect-preview-cloud_main.iml" group="collect-preview-cloud" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/collect-preview-cloud_test.iml" filepath="$PROJECT_DIR$/.idea/modules/collect-preview-cloud_test.iml" group="collect-preview-cloud" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/core.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/core_main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/core_main.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/core_test.iml" filepath="$PROJECT_DIR$/.idea/modules/core/core_test.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/http/http.iml" filepath="$PROJECT_DIR$/.idea/modules/http/http.iml" group="http" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/http/http_main.iml" filepath="$PROJECT_DIR$/.idea/modules/http/http_main.iml" group="http" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/http/http_test.iml" filepath="$PROJECT_DIR$/.idea/modules/http/http_test.iml" group="http" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mybatis/mybatis.iml" filepath="$PROJECT_DIR$/.idea/modules/mybatis/mybatis.iml" group="mybatis" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mybatis/mybatis_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mybatis/mybatis_main.iml" group="mybatis" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mybatis/mybatis_test.iml" filepath="$PROJECT_DIR$/.idea/modules/mybatis/mybatis_test.iml" group="mybatis" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mysql/mysql.iml" filepath="$PROJECT_DIR$/.idea/modules/mysql/mysql.iml" group="mysql" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mysql/mysql_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mysql/mysql_main.iml" group="mysql" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mysql/mysql_test.iml" filepath="$PROJECT_DIR$/.idea/modules/mysql/mysql_test.iml" group="mysql" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/redis/redis.iml" filepath="$PROJECT_DIR$/.idea/modules/redis/redis.iml" group="redis" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/redis/redis_main.iml" filepath="$PROJECT_DIR$/.idea/modules/redis/redis_main.iml" group="redis" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/redis/redis_test.iml" filepath="$PROJECT_DIR$/.idea/modules/redis/redis_test.iml" group="redis" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/swagger/swagger.iml" filepath="$PROJECT_DIR$/.idea/modules/swagger/swagger.iml" group="swagger" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/swagger/swagger_main.iml" filepath="$PROJECT_DIR$/.idea/modules/swagger/swagger_main.iml" group="swagger" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/swagger/swagger_test.iml" filepath="$PROJECT_DIR$/.idea/modules/swagger/swagger_test.iml" group="swagger" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web.iml" group="web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web-admin/web-admin.iml" filepath="$PROJECT_DIR$/.idea/modules/web-admin/web-admin.iml" group="web-admin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web-admin/web-admin_main.iml" filepath="$PROJECT_DIR$/.idea/modules/web-admin/web-admin_main.iml" group="web-admin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web-admin/web-admin_test.iml" filepath="$PROJECT_DIR$/.idea/modules/web-admin/web-admin_test.iml" group="web-admin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_main.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_main.iml" group="web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web_test.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web_test.iml" group="web" />
+    </modules>
+  </component>
+</project>

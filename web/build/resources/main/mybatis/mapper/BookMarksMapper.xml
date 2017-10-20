@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.mapper.BookMarksMapper" >
+    <resultMap id="BaseResultMap" type="com.web.entity.BookMarkEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="macro_type" property="macroTypeEnum" javaType="com.web.enums.MacroTypeEnum"/>
+        <result column="micro_type" property="microTypeEnum" javaType="com.web.enums.MicroTypeEnum"/>
+        <result column="web_site" property="webSite" jdbcType="VARCHAR" />
+        <result column="href" property="href" jdbcType="VARCHAR" />
+        <result column="pagination_href" property="paginationHref" jdbcType="VARCHAR" />
+        <result column="icon" property="icon" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, macro_type, micro_type, web_site, href, pagination_href, icon
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM book_marks
+    </select>
+
+    <select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM book_marks
+        WHERE id = #{id}
+    </select>
+
+    <select id="getBookMark" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM book_marks
+        WHERE web_site = #{webSite, jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insert" parameterType="com.web.entity.BookMarkEntity" >
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO
+        book_marks
+        (
+          web_site,
+          href,
+          <if test="paginationHref != null">pagination_href, </if>
+          icon
+        )
+        VALUES
+        (
+          #{webSite},
+          #{href},
+          <if test="paginationHref != null">#{paginationHref}, </if>
+          #{icon}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.web.entity.BookMarkEntity" >
+        UPDATE
+        book_marks
+        SET
+        <if test="webSite != null">web_site = #{webSite},</if>
+        <if test="href != null">href = #{href},</if>
+        <if test="paginationHref != null">pagination_href = #{paginationHref},</if>
+        <if test="icon != null">icon = #{icon},</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM
+        book_marks
+        WHERE
+        id = #{id}
+    </delete>
+
+</mapper>

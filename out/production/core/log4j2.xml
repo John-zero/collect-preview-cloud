@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    http://logging.apache.org/log4j/2.x/manual/configuration.html
+
+    日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL
+-->
+
+<Configuration status="TRACE" packages="com.log" monitorInterval="30">
+    <Properties>
+        <Property name="PluginPattern">%d{yyyy-MM-dd HH:mm:ss.SSS}  %highlight{%-5level} %PID --- [%t] %logger{36}.%M() : %msg%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${PluginPattern}"/>
+        </Console>
+
+        <!-- 自定义的 Appender -->
+        <FileAppender name="File" fileName="log.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5p] {%F:%L} - %m%n" />
+        </FileAppender>
+
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

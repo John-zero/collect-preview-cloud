@@ -1,0 +1,9 @@
+dependencies {
+
+	// Admin (注意: 服务端 + 客户端 组成)
+	// https://github.com/codecentric/spring-boot-admin
+	// https://codecentric.github.io/spring-boot-admin/1.5.0/
+	// https://docs.spring.io/spring-cloud-dataflow-admin-cloudfoundry/docs/current-SNAPSHOT/reference/html/configuration-monitoring-management.html
+	compile group: 'de.codecentric', name: 'spring-boot-admin-server', version: '1.5.4'
+	compile group: 'de.codecentric', name: 'spring-boot-admin-server-ui', version: '1.5.4'
+}
